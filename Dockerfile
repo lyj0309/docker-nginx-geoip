@@ -14,9 +14,9 @@ RUN set -x && DEBIAN_FRONTEND=noninteractive apt-get update \
 
 # The actual nginx server config, this needs to get loaded last.
 # Make sure you copy it to default.conf to overwrite the normal config!
-COPY config/nginx.conf /etc/nginx/nginx.conf
-COPY config/proxy.conf /etc/nginx/conf.d/default.conf
-COPY config/upstream.conf /etc/nginx/conf.d/00-upstream.conf
+#COPY config/nginx.conf /etc/nginx/nginx.conf
+#COPY config/proxy.conf /etc/nginx/conf.d/default.conf
+#COPY config/upstream.conf /etc/nginx/conf.d/00-upstream.conf
 
 # Install Maxmind db library
 ENV MAXMIND_VERSION=1.7.1
@@ -56,10 +56,10 @@ RUN set -x \
 # This example uses the free version from https://dev.maxmind.com/geoip/geoip2/geolite2/
 #
 # We only use the country db, you can add the city db and others if you want them.
-RUN set -x && mkdir -p /usr/share/geoip \
-  && wget -O /tmp/country.tar.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz \
-  && tar xf /tmp/country.tar.gz -C /usr/share/geoip --strip 1 \
-  && ls -al /usr/share/geoip/
+#RUN set -x && mkdir -p /usr/share/geoip \
+#  && wget -O /tmp/country.tar.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz \
+#  && tar xf /tmp/country.tar.gz -C /usr/share/geoip --strip 1 \
+#  && ls -al /usr/share/geoip/
 
 EXPOSE 80
 EXPOSE 443
